@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service definition for Books'
+@ObjectModel : { leadingEntity.name: 'Z307_C_BOOKS' }
+define service ZSD_BOOKS
+  provider contracts odata_v4_ui {
+  expose Z307_C_BOOKS;
+}

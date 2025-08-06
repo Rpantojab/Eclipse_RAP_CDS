@@ -1,0 +1,44 @@
+managed implementation in class zbp_307_r_books unique;
+strict ( 2 );
+with draft;
+define behavior for Z307_R_BOOKS alias Books
+persistent table z307_books_your
+draft table z307_books_you_d
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master (global)
+
+{
+  field ( numbering : managed, readonly ) ID;
+  field (mandatory : create) BookCode;
+  field (readonly) Localcreatedby, Localcreatedat, Locallastchangedby, Locallastchangedat, Lastchangedat;
+  create ( authorization : global );
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for z307_books_your {
+  ID = id             ;
+  Bookcode = bookcode ;
+  Title = title;
+  Description = description;
+  Author = author;
+  Category = category;
+  Language = language;
+  Publicationyear = publicationyear;
+  Rating = rating;
+  Price = price;
+  Currency = currency;
+  Stock = stock;
+  Localcreatedby = local_created_by;
+  Localcreatedat = local_created_at;
+  Locallastchangedby = local_last_changed_by;
+  Locallastchangedat = local_last_changed_at;
+  Lastchangedat = last_changed_at;
+  }
+}

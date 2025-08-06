@@ -1,0 +1,109 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo : {
+
+    description: {
+        type: #STANDARD,
+        value: 'Title'
+    },
+    title:{
+    type: #STANDARD,
+    value:'Bookcode'
+    },
+    typeName: 'Book',
+    typeNamePlural: 'Books'
+
+}
+annotate entity Z307_C_BOOKS with
+{
+  @UI.facet: [{ type: #IDENTIFICATION_REFERENCE ,
+   position: 10,
+   purpose: #STANDARD,
+   label: 'General Information Books',
+   id: 'FactInformation'
+   }]
+  @UI.hidden: true
+  ID;
+  @EndUserText.label: 'Book Code'
+  @UI: {lineItem : [{ position: 10, label: 'Book Code' }],
+        identification: [{position: 10, label: 'Book Code'  }],
+        selectionField: [{position: 10  }]
+        }
+  Bookcode;
+  @EndUserText.label: 'Title'
+  @UI: {lineItem : [{ position: 20, label: 'Title' }],
+        identification: [{position: 20, label: 'Title'  }],
+        selectionField: [{position: 20  }]
+        }
+  Title;
+  @EndUserText.label: 'Description'
+  @UI: {lineItem : [{ position: 30, label: 'Description' }],
+        identification: [{position: 30, label: 'Description'  }],
+        selectionField: [{position: 30  }]
+        }
+  @UI.multiLineText: true
+  Description;
+  @EndUserText.label: 'Author'
+  @UI: {lineItem : [{ position: 40, label: 'Author' }],
+        identification: [{position: 40, label: 'Author'  }],
+        selectionField: [{position: 40  }]
+        }
+  Author;
+  @EndUserText.label: 'Category'
+  @UI: {lineItem : [{ position: 50, label: 'Category' }],
+        identification: [{position: 50, label: 'Category'  }],
+        selectionField: [{position: 50  }]
+        }
+  @Consumption.valueHelpDefinition: [{ entity: {name: 'Z307_I_CATEGORIES_YOURUSER',
+      element: 'ID'}, useForValidation: true }]
+  Category;
+  @EndUserText.label: 'Language'
+  @UI: {lineItem : [{ position: 60, label: 'Language' }],
+        identification: [{position: 60, label: 'Language'  }],
+        selectionField: [{position: 60  }]
+        }
+  @Consumption.valueHelpDefinition: [{ entity: {name: 'I_Language',
+      element: 'Language'}, useForValidation: true  }]
+  Language;
+  @EndUserText.label: 'Publication Year'
+  @UI: {lineItem : [{ position: 70, label: 'Publication Year' }],
+        identification: [{position: 70, label: 'Publication Year'  }],
+        selectionField: [{position: 70  }]
+        }
+  @Consumption.valueHelpDefinition: [{ entity: {name: 'I_CalendarYear',
+  element: 'CalendarYear'}, useForValidation: true  }]
+  Publicationyear;
+  @EndUserText.label: 'Rating'
+  @UI: {lineItem : [{ position: 80, label: 'Rating' }],
+        identification: [{position: 80, label: 'Rating'  }],
+        selectionField: [{position: 80  }]
+        }
+  Rating;
+  @EndUserText.label: 'Price'
+  @UI: {lineItem : [{ position: 90, label: 'Price' }],
+        identification: [{position: 90, label: 'Price'  }],
+        selectionField: [{position: 90  }]
+        }
+  Price;
+  @EndUserText.label: 'Currency'
+  Currency;
+  @UI: {lineItem : [{ position: 110, label: 'Stock' }],
+        identification: [{position: 110, label: 'Stock'  }],
+        selectionField: [{position: 110  }]
+        }
+  Stock;
+  @UI.hidden: true
+  LocalCreatedBy;
+  @UI.hidden: true
+  LocalCreatedAt;
+  @UI.hidden: true
+  LocalLastChangedBy;
+  @UI.hidden: true
+  LocalLastChangedAt;
+  @UI.hidden: true
+  LastChangedAt;
+  /* Associations */
+  @EndUserText.label: 'Currency'
+  _Currency;
+
+}
